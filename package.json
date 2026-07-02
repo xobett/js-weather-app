@@ -1,0 +1,30 @@
+{
+  "name": "js-weather-app",
+  "version": "1.0.0",
+  "description": "Weather App practice project for APIs and promises using JavaScript.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "predeploy": "git add dist -f && git commit -m\"Deployment commit\"",
+    "deploy": "git subtree push --prefix dist origin gh-pages",
+    "postdeploy": "git checkout main"
+  },
+  "author": "xobett",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "css-loader": "^7.1.4",
+    "eslint": "^10.5.0",
+    "globals": "^17.7.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.6",
+    "prettier": "3.8.4",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.106.0",
+    "webpack-cli": "^7.0.2",
+    "webpack-dev-server": "^5.2.3",
+    "webpack-merge": "^6.0.1"
+  }
+}

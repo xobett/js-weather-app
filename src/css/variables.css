@@ -1,0 +1,15 @@
+:root {
+  --clr-white: #ffffff;
+  --clr-indigo-25: #bccad6;
+  --clr-indigo-50: #8d9db6;
+  --clr-indigo-75: #667292;
+  --clr-indigo-100: #3f507e;
+  --clr-pink-25: #f1e3dd;
+  --clr-indigo-transparent: #3f507e75;
+
+  --font-family: sans-serif, system-ui;
+
+  --icon-size: 1.1em;
+  --icon-size-md: 3rem;
+  --icon-size-lg: 4rem;
+}
