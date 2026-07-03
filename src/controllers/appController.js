@@ -10,9 +10,6 @@ export class AppController {
   }
 
   init() {
-    this.#ui.render();
-    console.log("App loaded");
-
     this.#ui.LocationForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const form = e.target;
@@ -23,27 +20,56 @@ export class AppController {
 
       if (this.#isNotLetters(location) || this.#isWhiteSpace(location)) {
         valid = false;
-        console.log("invalid");
       }
 
       if (valid) {
-        console.log("fetching");
-        this.#fetchForecast(location);
+        this.#fetchForecastAsync(location);
       }
 
       form.reset();
     });
   }
 
-  #fetchForecast = async (loc) => {
+  #fetchForecastAsync = async (loc) => {
     try {
       const url = `${this.#baseUrl}/${loc}?key=${this.#apiKey}`;
       const response = await fetch(url);
       const json = await response.json();
-      console.log(json);
+      const data = this.#filterData(json);
+
+      this.#ui.renderData(data);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  #filterData = (json) => {
+    const data = {
+      currentInfo: {
+        currentCondition: json.currentConditions.conditions,
+        resolvedAddress: json.resolvedAddress,
+        currentTemp: json.currentConditions.temp,
+      },
+      nextDays: [],
+      conditions: {
+        sunriseTime: json.currentConditions.sunrise,
+        windSpeed: json.currentConditions.windspeed,
+        humidity: json.currentConditions.humidity,
+        sunsetTime: json.currentConditions.sunset,
+      },
+    };
+
+    for (let i = 0; i < 4; i++) {
+      const day = {
+        dateTime: json.days[i + 1].datetime,
+        conditions: json.days[i + 1].conditions,
+        temp: json.days[i + 1].temp,
+      };
+
+      data.nextDays.push(day);
+    }
+
+    return data;
   };
 
   #isNotLetters = (str) => !this.#onlyLettersRegex.test(str);

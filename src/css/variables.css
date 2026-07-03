@@ -10,6 +10,11 @@
   --font-family: sans-serif, system-ui;
 
   --icon-size: 1.1em;
+  --icon-size-xsm: 1.4rem;
+  --icon-size-sm: 2.4rem;
   --icon-size-md: 3rem;
   --icon-size-lg: 4rem;
+
+  --text-xsm: 0.8rem;
+  --text-sm: 1rem;
 }

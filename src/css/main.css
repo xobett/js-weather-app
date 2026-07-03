@@ -29,6 +29,8 @@ body {
 
   border-radius: 20px;
   overflow: hidden;
+
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 button.search-icon-container {
@@ -106,6 +108,8 @@ button.search-icon-container:active svg {
   color: var(--clr-white);
   font-weight: bold;
   font-size: 1.3rem;
+
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.45);
 }
 
 .next-day svg {
@@ -122,10 +126,10 @@ button.search-icon-container:active svg {
 
 .conditions {
   display: grid;
-  grid-template-columns: repeat(3, min(30%, 280px));
+  grid-template-columns: repeat(4, min(22%, 240px));
   grid-template-rows: 100px;
 
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .condition {
@@ -135,19 +139,23 @@ button.search-icon-container:active svg {
   height: 100%;
   width: 100%;
 
+  padding-inline: 10px;
   display: grid;
-  align-items: center;
-  padding-left: 40px;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
 
   color: var(--clr-white);
   font-weight: bold;
   font-size: 1.3rem;
+
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.45);
 }
 
 @media (max-width: 760px) {
   body {
     grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr 1fr;
+    padding-inline: 5px;
   }
 
   #container {
@@ -166,11 +174,25 @@ button.search-icon-container:active svg {
     grid-template-rows: 180px;
   }
 
+  .next-day {
+    font-size: var(--text-sm);
+  }
+
+  .next-day svg {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+  }
+
   .conditions {
     grid-template-rows: 60px;
   }
 
-  .conditions {
-    font-size: 2rem;
+  .condition {
+    font-size: var(--text-xsm);
+  }
+
+  .condition svg {
+    width: var(--icon-size-xsm);
+    height: var(--icon-size-xsm);
   }
 }
